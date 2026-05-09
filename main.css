@@ -1,0 +1,340 @@
+/* 1. VARIÁVEIS E BASE */
+:root {
+    --primary: #8b5cf6;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f8fafc;
+    --text-dim: #94a3b8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 2. NAVEGAÇÃO */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 10%; /* Diminuí um pouco o padding para ficar mais elegante */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Um tom mais escuro que o background geral, com transparência controlada */
+    background: rgba(7, 11, 20, 0.85); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    /* Uma borda inferior bem sutil para dar profundidade */
+    border-bottom: 1px solid rgba(139, 92, 246, 0.1); 
+}
+
+nav ul { 
+    display: flex; 
+    list-style: none; 
+    gap: 2.5rem; 
+}
+
+nav a { 
+    text-decoration: none; 
+    color: var(--text-dim); /* Começa um pouco mais discreto */
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+nav a:hover { 
+    color: var(--primary); 
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.4); /* Brilho suave no hover */
+}
+
+/* Estilo para o Logo (GO.) */
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -1px;
+}
+
+nav .logo span {
+    color: var(--primary);
+}
+
+/* 3. SOBRE (HERO) */
+#paginaSobre {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#info h1 { font-size: 4rem; margin-bottom: 0.5rem; }
+#info h2 { 
+    font-size: 1.5rem; 
+    color: var(--primary); 
+    margin-bottom: 1.5rem; 
+    font-weight: 400;
+}
+#info p { max-width: 500px; color: var(--text-dim); font-size: 1.1rem; }
+
+#foto .foto-bg {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    
+    /* CONFIGURAÇÃO DA IMAGEM DE FUNDO */
+    background-image: url('imagens/GabrielOazem.png');
+    background-size: 100% 100%;      /* Ajuste este valor (ex: 110%, 120%) para dar o "zoom out" */
+    background-repeat: no-repeat;
+    
+    border: 4px solid var(--primary);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+}
+
+#foto .foto-bg:hover {
+    transform: scale(1.05);
+    border-color: #a78bfa;
+}
+
+/* --- PROJETOS */
+/* CONTAINER PRINCIPAL (A MUDANÇA CHAVE) */
+#paginaProjetos { 
+    padding: 100px 10%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+#paginaProjetos h2 { 
+    font-size: 2.5rem; 
+    margin-bottom: 3rem; 
+    text-align: center; 
+}
+
+.grid-projetos {
+    display: flex;
+    flex-wrap: wrap;       /* Permite quebrar linha */
+    gap: 2rem;
+    justify-content: center; /* Centraliza os itens da última linha */
+}
+
+/* ESTILO DO CARD */
+.card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    border: 1px solid rgba(255,255,255,0.05);
+    
+    /* Configuração Flex para o Card */
+    display: flex;
+    flex-direction: column;
+    
+    /* Largura: Tenta ocupar 1/3, mas não passa de 350px para não deformar embaixo */
+    flex: 1 1 300px; 
+    max-width: 280px; 
+}
+
+.card:hover { 
+    transform: translateY(-10px); 
+}
+
+.card img { 
+    width: 100%; 
+    height: 10rem; 
+    object-fit: fill; 
+}
+
+.card .iconeSistema { 
+    margin-left: 10%;
+    width: 80%; 
+}
+
+/* CONTEÚDO INTERNO DO CARD */
+.card-content { 
+    text-align: center;
+    padding: 1rem; 
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Faz o conteúdo preencher o card para alinhar os botões */
+}
+
+.card-content h3 { 
+    margin-bottom: 0.5rem; 
+}
+
+.card-content p { 
+    color: var(--text-dim); 
+    font-size: 0.9rem; 
+    margin-bottom: 1.5rem; 
+    flex-grow: 1; /* Empurra as tags e botões para o final */
+}
+
+/* TAGS E ÍCONES */
+.tags { 
+    display: flex; 
+    gap: 10px; 
+    margin-top: 1.5rem; 
+    margin-right: 1rem;
+    justify-content: end;
+}
+
+.tags img { 
+    width: 25px; 
+    height: 25px; 
+    transition: 0.3s; 
+    border-radius: 5px;
+}
+
+/* BOTÕES */
+.btns { 
+    display: flex; 
+    gap: 10px; 
+    margin-top: auto; 
+}
+
+.btns a {
+    padding: 10px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+    flex: 1;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.acessar { 
+    background: var(--primary); 
+    color: white; 
+    border: 1px solid var(--primary); 
+}
+
+.acessar:hover { 
+    opacity: 0.9; 
+}
+
+.codigo { 
+    border: 1px solid var(--primary); 
+    color: var(--primary); 
+}
+
+.codigo:hover { 
+    background: rgba(139, 92, 246, 0.1); 
+}
+
+/* 6. CONTATO */
+#paginaContato {
+    padding: 120px 10% 40px;
+    background: linear-gradient(180deg, var(--bg) 0%, #0a0f1d 100%);
+    text-align: left;
+}
+
+#paginaContato .contato-texto{
+    text-align: center;
+}
+
+
+.contato-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.contato-texto h2 {
+    font-size: 3rem;
+    background: linear-gradient(90deg, #fff, var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.contato-status {
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(34, 197, 94, 0.1);
+    color: #4ade80;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.ponto-verde {
+    width: 10px;
+    height: 10px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #22c55e;
+}
+
+.contatos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dois cards por linha */
+    gap: 20px;
+    align-items: stretch; /* Alturas iguais */
+}
+
+.card-contato {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+}
+
+.card-contato:hover {
+    border-color: var(--primary);
+    transform: translateX(5px);
+}
+
+.icon-bg img { width: 25px; height: 25px; border-radius: 5px; }
+
+.card-contato span { display: block; color: var(--text); font-weight: bold; }
+.card-contato p { color: var(--text-dim); font-size: 0.8rem; margin: 0; }
+
+.mini-footer {
+    margin-top: 100px;
+    padding-top: 30px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 7. RESPONSIVIDADE */
+@media (max-width: 968px) {
+    .contato-container { grid-template-columns: 1fr; text-align: left; }
+    .contatos-grid { grid-template-columns: 1fr; }
+    #paginaSobre { flex-direction: column-reverse; text-align: center; height: auto; padding-top: 150px; }
+    #info h1 { font-size: 2.5rem; }
+    #foto .foto-bg { width: 250px; height: 250px; margin-bottom: 2rem; margin: 0 auto; }
+    nav ul { display: none; }
+}
